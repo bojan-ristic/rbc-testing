@@ -25,7 +25,4 @@ public class Book {
 
     private Integer numberOfPages;
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> comments;
-
 }
