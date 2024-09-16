@@ -1,5 +1,6 @@
-package com.productdock.rbc2024.mapper;
+package com.productdock.rbc2024.mapper.bookmapper;
 
+import com.productdock.rbc2024.mapper.BookMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

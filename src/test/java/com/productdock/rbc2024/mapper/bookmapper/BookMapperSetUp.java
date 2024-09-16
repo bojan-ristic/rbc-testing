@@ -1,4 +1,4 @@
-package com.productdock.rbc2024.mapper;
+package com.productdock.rbc2024.mapper.bookmapper;
 
 import com.productdock.rbc2024.dto.BookDetailsDto;
 import com.productdock.rbc2024.model.Book;
@@ -26,4 +26,5 @@ class BookMapperSetUp {
                 .numberOfPages(BOOK_NUMBER_OF_PAGES)
                 .build();
     }
+
 }
