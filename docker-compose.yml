@@ -1,0 +1,14 @@
+version: '1'
+services:
+  mysql:
+    image: mysql:8.3.0
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d/
+      - ./mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_PASSWORD: admin
+      MYSQL_DATABASE: library
+      MYSQL_USER: admin
+      MYSQL_ROOT_PASSWORD: admin
