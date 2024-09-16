@@ -6,6 +6,7 @@ import com.productdock.rbc2024.dto.EditBookDetailsDto;
 import com.productdock.rbc2024.exception.BookTitleAlreadyExistsException;
 import com.productdock.rbc2024.exception.EntityNotFoundException;
 import com.productdock.rbc2024.mapper.BookMapper;
+import com.productdock.rbc2024.model.Book;
 import com.productdock.rbc2024.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -73,6 +74,14 @@ public class BookService {
     public void deleteBook(Long id) {
         var book = bookRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Book with id: " + id + " you are trying to edit does not exist."));
         bookRepository.delete(book);
+    }
+
+    public Integer getNumberOfPages(String title) {
+        var filteredBooks = bookRepository.findByTitleContainingIgnoreCase(title);
+        return filteredBooks.stream()
+                .map(Book::getNumberOfPages)
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Book not found"));
     }
 
 }
