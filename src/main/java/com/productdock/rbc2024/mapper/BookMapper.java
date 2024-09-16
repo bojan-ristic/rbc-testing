@@ -15,12 +15,12 @@ import java.util.stream.Collectors;
 public class BookMapper {
 
     public BookDetailsDto convertModelToBookDetailsDto(Book book) {
-        return BookDetailsDto.builder()
-                .id(book.getId())
-                .title(book.getTitle())
-                .author(book.getAuthor())
-                .numberOfPages(book.getNumberOfPages())
-                .build();
+        var bookDetailsDto = new BookDetailsDto();
+        bookDetailsDto.setId(book.getId());
+        bookDetailsDto.setTitle(book.getTitle());
+        bookDetailsDto.setAuthor(book.getAuthor());
+        bookDetailsDto.setNumberOfPages(book.getNumberOfPages());
+        return bookDetailsDto;
     }
 
     public BookDto convertModelToBookDto(Book book) {
