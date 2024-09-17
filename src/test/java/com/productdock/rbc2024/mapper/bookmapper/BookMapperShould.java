@@ -1,15 +1,17 @@
 package com.productdock.rbc2024.mapper.bookmapper;
 
+import com.productdock.rbc2024.dto.BookDetailsDto;
+import com.productdock.rbc2024.dto.EditBookDetailsDto;
 import com.productdock.rbc2024.mapper.BookMapper;
+import com.productdock.rbc2024.model.Book;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BookMapperShould {
 
     private BookMapper bookMapper;
-
 
     @BeforeEach
     void setUp() {
@@ -18,15 +20,30 @@ class BookMapperShould {
 
     @Test
     void convertModelToBookDetailsDto() {
-        // given
-        var book = BookMapperSetUp.createBook();
+        Book bookToConvert = BookMapperSetUp.createBook();
+        BookDetailsDto bookDetailsDtoToTest = bookMapper.convertModelToBookDetailsDto(bookToConvert);
+        BookDetailsDto expectedBookDetailsDtoResult = BookMapperSetUp.createExpectedBookDetailsDtoResult();
 
-        // when
-        var bookDetailsDto = bookMapper.convertModelToBookDetailsDto(book);
+        assertThat(bookDetailsDtoToTest).usingRecursiveComparison().isEqualTo(expectedBookDetailsDtoResult);
+    }
 
-        // then
-        var expected = BookMapperSetUp.createExpectedResultBookDetailsDto();
-        assertEquals(expected, bookDetailsDto);
+    @Test
+    void convertBookDetailsDtoToModel(){
+        BookDetailsDto bookDetailsDtoToConvert = BookMapperSetUp.createBookDetailsDto();
+        Book bookToTest = bookMapper.convertBookDetailsDtoToModel(bookDetailsDtoToConvert);
+        Book expectedBookResult = BookMapperSetUp.createExpectedBookResult();
+
+        assertThat(bookToTest).usingRecursiveComparison().isEqualTo(expectedBookResult);
+    }
+
+    @Test
+    void convertEditBookDetailsDtoToModel(){
+        EditBookDetailsDto editBookDetailsDto = BookMapperSetUp.createEditBookDetailsDto();
+        Book bookFromDbToUpdate = BookMapperSetUp.createBook();
+        Book bookToTest = bookMapper.convertEditBookDetailsDtoToModel(editBookDetailsDto, bookFromDbToUpdate);
+        Book expectedBookResult = BookMapperSetUp.createExpectedBookResult();
+
+        assertThat(bookToTest).usingRecursiveComparison().isEqualTo(expectedBookResult);
     }
 
 }
