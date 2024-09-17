@@ -1,6 +1,7 @@
 package com.productdock.rbc2024.mapper.bookmapper;
 
 import com.productdock.rbc2024.dto.BookDetailsDto;
+import com.productdock.rbc2024.dto.EditBookDetailsDto;
 import com.productdock.rbc2024.model.Book;
 import com.productdock.rbc2024.model.Comment;
 
@@ -67,6 +68,14 @@ class BookMapperSetUp {
                 .book(book)
                 .build();
     }
+
+    static EditBookDetailsDto createEditBookDetailsDto() {
+        return EditBookDetailsDto.builder()
+                .numberOfPages(BOOK_NUMBER_OF_PAGES)
+                .title(BOOK_TITLE)
+                .build();
+    }
+
 
 
 }
