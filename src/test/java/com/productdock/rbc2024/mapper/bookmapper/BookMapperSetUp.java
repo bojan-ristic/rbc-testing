@@ -18,32 +18,12 @@ class BookMapperSetUp {
     static final String BOOK_TITLE = "title";
     static final int BOOK_NUMBER_OF_PAGES = 120;
 
-    static final long FIRST_COMMENT_ID = 1L;
-    static final String FIRST_COMMENT_CONTENT = "comment_content";
-
-    static final long SECOND_COMMENT_ID = 2L;
-    static final String SECOND_COMMENT_CONTENT = "comment_content";
-
     static Book createBook() {
         return Book.builder()
                 .id(BOOK_ID)
                 .author(BOOK_NEW_AUTHOR)
                 .title(BOOK_TITLE)
                 .numberOfPages(BOOK_NUMBER_OF_PAGES)
-                .build();
-    }
-
-    private static List<Comment> createComments() {
-        var theFirstComment = createComment(FIRST_COMMENT_ID, FIRST_COMMENT_CONTENT, null);
-        var theSecondComment = createComment(SECOND_COMMENT_ID, SECOND_COMMENT_CONTENT, null);
-        return List.of(theFirstComment, theSecondComment);
-    }
-
-    private static Comment createComment(Long id, String content, Book book) {
-        return Comment.builder()
-                .id(id)
-                .content(content)
-                .book(book)
                 .build();
     }
 
@@ -62,13 +42,6 @@ class BookMapperSetUp {
                 .author(BOOK_NEW_AUTHOR)
                 .title(BOOK_TITLE)
                 .numberOfPages(BOOK_NUMBER_OF_PAGES)
-                .build();
-    }
-
-    static CommentDto createExpectedResultCommentDto() {
-        return CommentDto.builder()
-                .id(FIRST_COMMENT_ID)
-                .content(FIRST_COMMENT_CONTENT)
                 .build();
     }
 
@@ -96,5 +69,4 @@ class BookMapperSetUp {
                 .numberOfPages(EDIT_BOOK_NUMBER_OF_PAGES)
                 .build();
     }
-
 }

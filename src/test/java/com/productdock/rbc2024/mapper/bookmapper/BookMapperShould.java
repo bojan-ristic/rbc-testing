@@ -10,7 +10,6 @@ class BookMapperShould {
 
     private BookMapper bookMapper;
 
-
     @BeforeEach
     void setUp() {
         bookMapper = new BookMapper();
@@ -47,21 +46,16 @@ class BookMapperShould {
 
         var expected = BookMapperSetUp.createBook();
         assertEquals(expected, book);
-        assertEquals(expected.getId(), book.getId());
-        assertEquals(expected.getAuthor(), book.getAuthor());
-        assertEquals(expected.getTitle(), book.getTitle());
-        assertEquals(expected.getNumberOfPages(), book.getNumberOfPages());
     }
 
     @Test
     void convertEditBookDetailsDtoToModel() {
-        var editBookDto = BookMapperSetUp.createEditBookDetailsDto();
+        var editBookDetailsDto = BookMapperSetUp.createEditBookDetailsDto();
         var book = BookMapperSetUp.createBook();
 
-        var actual = bookMapper.convertEditBookDetailsDtoToModel(editBookDto, book);
+        var actual = bookMapper.convertEditBookDetailsDtoToModel(editBookDetailsDto, book);
 
         var expected = BookMapperSetUp.createExpectedResultEditedBook();
         assertEquals(expected, actual);
     }
-
 }
