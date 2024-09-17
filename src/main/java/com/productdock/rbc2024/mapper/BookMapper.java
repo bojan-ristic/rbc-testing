@@ -15,33 +15,11 @@ import java.util.stream.Collectors;
 public class BookMapper {
 
     public BookDetailsDto convertModelToBookDetailsDto(Book book) {
-        var bookDetailsDto = new BookDetailsDto();
-        bookDetailsDto.setId(book.getId());
-        bookDetailsDto.setTitle(book.getTitle());
-        bookDetailsDto.setAuthor(book.getAuthor());
-        bookDetailsDto.setNumberOfPages(book.getNumberOfPages());
-        return bookDetailsDto;
-    }
-
-    public BookDto convertModelToBookDto(Book book) {
-        return BookDto.builder()
+        return BookDetailsDto.builder()
                 .id(book.getId())
                 .title(book.getTitle())
                 .author(book.getAuthor())
                 .numberOfPages(book.getNumberOfPages())
-                .build();
-    }
-
-    private List<CommentDto> convertCommentToDto(List<Comment> comments) {
-        return comments.stream()
-                .map(BookMapper::convertCommentToCommentDto)
-                .collect(Collectors.toList());
-    }
-
-    private static CommentDto convertCommentToCommentDto(Comment comment) {
-        return CommentDto.builder()
-                .id(comment.getId())
-                .content(comment.getContent())
                 .build();
     }
 
