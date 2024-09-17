@@ -1,5 +1,6 @@
 package com.productdock.rbc2024.service;
 
+import com.productdock.rbc2024.mapper.BookMapper;
 import com.productdock.rbc2024.model.Book;
 import com.productdock.rbc2024.repository.BookRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -26,6 +27,9 @@ class BookServiceShould {
     @Mock
     private BookRepository bookRepository;
 
+    @Mock
+    private BookMapper bookMapper;
+
     private static Stream<Arguments> getBooks() {
         return Stream.of(
                 Arguments.of("The Hobbit", "J.R.R. Tolkien", 310),
@@ -35,7 +39,7 @@ class BookServiceShould {
     }
 
     @ParameterizedTest
-    @DisplayName("Should return correct number of pages for different books")
+    @DisplayName("return correct number of pages for different books")
     @MethodSource("getBooks")
     void testGetNumberOfPages(String title, String author, Integer expectedPages) {
         var book = Book.builder()
