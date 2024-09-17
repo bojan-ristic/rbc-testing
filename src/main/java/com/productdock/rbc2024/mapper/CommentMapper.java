@@ -3,20 +3,21 @@ package com.productdock.rbc2024.mapper;
 import com.productdock.rbc2024.dto.BookDetailsDto;
 import com.productdock.rbc2024.dto.CommentDto;
 import com.productdock.rbc2024.model.Comment;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class CommentMapper {
 
-    private final BookMapper bookMapper;
+    //private final BookMapper bookMapper;
 
     public Comment convertCommentDtoToModel(CommentDto commentDto, BookDetailsDto bookDto) {
         return Comment.builder()
                 .id(commentDto.getId())
                 .content(commentDto.getContent())
-                .book(bookMapper.convertBookDetailsDtoToModel(bookDto))
+              //  .book(bookMapper.convertBookDetailsDtoToModel(bookDto))
                 .build();
     }
 
