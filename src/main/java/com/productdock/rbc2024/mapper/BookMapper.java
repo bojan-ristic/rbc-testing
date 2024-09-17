@@ -29,7 +29,6 @@ public class BookMapper {
                 .title(book.getTitle())
                 .author(book.getAuthor())
                 .numberOfPages(book.getNumberOfPages())
-                .comments(convertCommentToDto(book.getComments()))
                 .build();
     }
 

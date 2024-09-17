@@ -9,8 +9,7 @@ import java.util.List;
 @Table(name = "books")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 @Builder
 public class Book {
 
