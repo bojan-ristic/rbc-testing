@@ -1,16 +1,16 @@
 package com.productdock.rbc2024.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+//@Data
+@Getter
+@Setter
 @Builder
+@EqualsAndHashCode
 public class BookDto {
 
     private Long id;
@@ -21,6 +21,6 @@ public class BookDto {
 
     private Integer numberOfPages;
 
-    private List<CommentDto> comments;
+//    private List<CommentDto> comments;
 
 }

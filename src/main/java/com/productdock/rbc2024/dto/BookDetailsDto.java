@@ -1,14 +1,14 @@
 package com.productdock.rbc2024.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+//@Data
+@Getter
+@Setter
 @Builder
+@EqualsAndHashCode
 public class BookDetailsDto {
 
     private Long id;
