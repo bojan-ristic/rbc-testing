@@ -24,7 +24,8 @@ public class BookService {
     private final BookMapper bookMapper;
 
     public List<BookDetailsDto> getAll() {
-        return bookRepository.findAll()
+        var books = bookRepository.findAll();
+        return books
                 .stream()
                 .map(bookMapper::convertModelToBookDetailsDto)
                 .collect(Collectors.toList());
