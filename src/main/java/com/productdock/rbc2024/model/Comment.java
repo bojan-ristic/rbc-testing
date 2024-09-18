@@ -1,5 +1,6 @@
 package com.productdock.rbc2024.model;
 
+import com.productdock.rbc2024.dto.CommentDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,7 +11,7 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class Comment {
+public class Comment implements Comparable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +23,10 @@ public class Comment {
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
+    @Override
+    public int compareTo(Object o) {
+        Comment other = (Comment)o;
+
+        return this.content.compareTo(other.content);
+    }
 }

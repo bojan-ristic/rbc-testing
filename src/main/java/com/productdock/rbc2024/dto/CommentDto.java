@@ -9,10 +9,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-public class CommentDto {
+public class CommentDto implements Comparable {
 
     private Long id;
 
     private String content;
 
+
+    @Override
+    public int compareTo(Object o) {
+        CommentDto other = (CommentDto)o;
+
+        return this.content.compareTo(other.content);
+    }
 }

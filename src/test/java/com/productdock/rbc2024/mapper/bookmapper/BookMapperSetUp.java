@@ -1,6 +1,8 @@
 package com.productdock.rbc2024.mapper.bookmapper;
 
 import com.productdock.rbc2024.dto.BookDetailsDto;
+import com.productdock.rbc2024.dto.BookDto;
+import com.productdock.rbc2024.dto.EditBookDetailsDto;
 import com.productdock.rbc2024.model.Book;
 import com.productdock.rbc2024.model.Comment;
 
@@ -50,4 +52,19 @@ class BookMapperSetUp {
                 .build();
     }
 
+    static BookDto createBookDto() {
+        return BookDto.builder()
+                .id(BOOK_ID)
+                .title(BOOK_TITLE)
+                .author(BOOK_NEW_AUTHOR)
+                .numberOfPages(BOOK_NUMBER_OF_PAGES)
+                .build();
+    }
+
+    static EditBookDetailsDto createExpectedEditBookDetailsDto() {
+        return EditBookDetailsDto.builder()
+                .numberOfPages(120)
+                .title("title")
+                .build();
+    }
 }
