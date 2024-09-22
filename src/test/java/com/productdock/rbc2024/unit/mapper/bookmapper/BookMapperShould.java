@@ -1,15 +1,16 @@
-package com.productdock.rbc2024.mapper.bookmapper;
+package com.productdock.rbc2024.unit.mapper.bookmapper;
 
 import com.productdock.rbc2024.mapper.BookMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static com.productdock.rbc2024.unit.mapper.bookmapper.BookMapperSetUp.createBook;
+import static com.productdock.rbc2024.unit.mapper.bookmapper.BookMapperSetUp.createExpectedBookDetailsDto;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BookMapperShould {
 
     private BookMapper bookMapper;
-
 
     @BeforeEach
     void setUp() {
@@ -18,14 +19,11 @@ class BookMapperShould {
 
     @Test
     void convertModelToBookDetailsDto() {
-        // given
-        var book = BookMapperSetUp.createBook();
+        var book = createBook();
 
-        // when
         var bookDetailsDto = bookMapper.convertModelToBookDetailsDto(book);
 
-        // then
-        var expected = BookMapperSetUp.createExpectedResultBookDetailsDto();
+        var expected = createExpectedBookDetailsDto();
         assertEquals(expected, bookDetailsDto);
     }
 

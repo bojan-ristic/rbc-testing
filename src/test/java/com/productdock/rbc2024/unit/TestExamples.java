@@ -1,4 +1,4 @@
-package com.productdock.rbc2024.examples.unittests;
+package com.productdock.rbc2024.unit;
 
 import com.productdock.rbc2024.mapper.BookMapper;
 import com.productdock.rbc2024.model.Book;
@@ -13,6 +13,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class BookServiceShould {
+class TestExamples {
 
     @InjectMocks
     private BookService bookService;
@@ -34,7 +35,7 @@ class BookServiceShould {
     @Mock
     private BookMapper bookMapper;
 
-    @Mock
+    @Spy
     List<String> spiedList = new ArrayList<>();
 
     private static Stream<Arguments> getBooks() {
@@ -54,7 +55,6 @@ class BookServiceShould {
                 .author(author)
                 .numberOfPages(expectedPages)
                 .build();
-
         when(bookRepository.findByTitleContainingIgnoreCase(title)).thenReturn(List.of(book));
 
         int numberOfPages = bookService.getNumberOfPages(title);
@@ -69,12 +69,12 @@ class BookServiceShould {
         spiedList.add("one");
         spiedList.add("two");
 
-        Mockito.verify(spiedList).add("one");
-        Mockito.verify(spiedList).add("two");
+        verify(spiedList).add("one");
+        verify(spiedList).add("two");
 
         assertEquals(2, spiedList.size());
 
-        Mockito.doReturn(100).when(spiedList).size();
+        doReturn(100).when(spiedList).size();
         assertEquals(100, spiedList.size());
     }
 

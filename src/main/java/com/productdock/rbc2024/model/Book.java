@@ -3,6 +3,8 @@ package com.productdock.rbc2024.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "books")
 @NoArgsConstructor
@@ -22,5 +24,26 @@ public class Book {
     private String author;
 
     private Integer numberOfPages;
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (!(object instanceof Book)) {
+            return false;
+        }
+
+        Book book = (Book) object;
+        return Objects.equals(id, book.id) &&
+                Objects.equals(title, book.title) &&
+                Objects.equals(author, book.author) &&
+                Objects.equals(numberOfPages, book.numberOfPages);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, author, numberOfPages);
+    }
 
 }

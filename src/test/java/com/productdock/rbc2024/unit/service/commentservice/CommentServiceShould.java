@@ -1,4 +1,4 @@
-package com.productdock.rbc2024.service.commentservice;
+package com.productdock.rbc2024.unit.service.commentservice;
 
 import com.productdock.rbc2024.mapper.BookMapper;
 import com.productdock.rbc2024.mapper.CommentMapper;

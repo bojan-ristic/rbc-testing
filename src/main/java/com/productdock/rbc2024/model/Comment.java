@@ -3,6 +3,8 @@ package com.productdock.rbc2024.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "comments")
 @NoArgsConstructor
@@ -21,5 +23,25 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (!(object instanceof Comment)) {
+            return false;
+        }
+
+        Comment comment = (Comment) object;
+        return Objects.equals(id, comment.id) &&
+                Objects.equals(content, comment.content) &&
+                Objects.equals(book, comment.book);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, content, book);
+    }
 
 }

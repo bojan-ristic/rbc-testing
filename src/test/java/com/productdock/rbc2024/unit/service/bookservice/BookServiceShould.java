@@ -1,4 +1,4 @@
-package com.productdock.rbc2024.service.bookservice;
+package com.productdock.rbc2024.unit.service.bookservice;
 
 import com.productdock.rbc2024.exception.EntityNotFoundException;
 import com.productdock.rbc2024.mapper.BookMapper;
@@ -12,7 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
-import static com.productdock.rbc2024.service.bookservice.BookServiceSetUp.BOOK_ID;
+import static com.productdock.rbc2024.unit.service.bookservice.BookServiceSetUp.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -30,14 +30,14 @@ class BookServiceShould {
 
     @Test
     void returnBookById() {
-        var book = BookServiceSetUp.createBook();
-        var bookDto = BookServiceSetUp.createBookDto();
+        var book = createBook();
+        var bookDto = createBookDto();
         when(bookRepository.findById(BOOK_ID)).thenReturn(Optional.of(book));
         when(bookMapper.convertModelToBookDto(book)).thenReturn(bookDto);
 
         var result = bookService.getById(BOOK_ID);
 
-        var expectedBookDto = BookServiceSetUp.createExpectedBookDto();
+        var expectedBookDto = createExpectedBookDto();
         assertEquals(expectedBookDto, result);
     }
 
