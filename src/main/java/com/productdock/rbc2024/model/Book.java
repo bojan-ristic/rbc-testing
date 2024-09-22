@@ -3,8 +3,6 @@ package com.productdock.rbc2024.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Entity
 @Table(name = "books")
 @NoArgsConstructor
