@@ -1,6 +1,8 @@
 package com.productdock.rbc2024.mapper.bookmapper;
 
 import com.productdock.rbc2024.dto.BookDetailsDto;
+import com.productdock.rbc2024.dto.BookDto;
+import com.productdock.rbc2024.dto.EditBookDetailsDto;
 import com.productdock.rbc2024.model.Book;
 import com.productdock.rbc2024.model.Comment;
 
@@ -27,6 +29,22 @@ class BookMapperSetUp {
                 .build();
     }
 
+    static BookDetailsDto createBookDetailsDto() {
+        return BookDetailsDto.builder()
+                .id(BOOK_ID)
+                .author(BOOK_NEW_AUTHOR)
+                .title(BOOK_TITLE)
+                .numberOfPages(BOOK_NUMBER_OF_PAGES)
+                .build();
+    }
+
+    static EditBookDetailsDto createEditBookDetailsDto() {
+        return EditBookDetailsDto.builder()
+                .title(BOOK_TITLE)
+                .numberOfPages(BOOK_NUMBER_OF_PAGES)
+                .build();
+    }
+
     private static List<Comment> createComments() {
         var theFirstComment = createComment(FIRST_COMMENT_ID, FIRST_COMMENT_CONTENT, null);
         var theSecondComment = createComment(SECOND_COMMENT_ID, SECOND_COMMENT_CONTENT, null);
@@ -43,6 +61,24 @@ class BookMapperSetUp {
 
     static BookDetailsDto createExpectedResultBookDetailsDto() {
         return BookDetailsDto.builder()
+                .id(BOOK_ID)
+                .author(BOOK_NEW_AUTHOR)
+                .title(BOOK_TITLE)
+                .numberOfPages(BOOK_NUMBER_OF_PAGES)
+                .build();
+    }
+
+    static BookDto createExpectedResultBookDto() {
+        return BookDto.builder()
+                .id(BOOK_ID)
+                .author(BOOK_NEW_AUTHOR)
+                .title(BOOK_TITLE)
+                .numberOfPages(BOOK_NUMBER_OF_PAGES)
+                .build();
+    }
+
+    static Book createExpectedResultBook() {
+        return Book.builder()
                 .id(BOOK_ID)
                 .author(BOOK_NEW_AUTHOR)
                 .title(BOOK_TITLE)

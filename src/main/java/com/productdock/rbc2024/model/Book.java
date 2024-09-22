@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "books")
@@ -24,5 +25,20 @@ public class Book {
     private String author;
 
     private Integer numberOfPages;
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (!(object instanceof Book)) {
+            return false;
+        }
+        Book book = (Book) object;
+        return  Objects.equals(id, book.id) &&
+                Objects.equals(title, book.title) &&
+                Objects.equals(author, book.author) &&
+                Objects.equals(numberOfPages, book.numberOfPages);
+    }
 
 }

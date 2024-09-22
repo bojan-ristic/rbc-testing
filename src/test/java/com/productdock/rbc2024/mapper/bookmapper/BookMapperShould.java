@@ -29,4 +29,41 @@ class BookMapperShould {
         assertEquals(expected, bookDetailsDto);
     }
 
+    @Test
+    void convertModelToBookDto(){
+
+        //given
+        var book = BookMapperSetUp.createBook();
+        //when
+        var bookDto = bookMapper.convertModelToBookDto(book);
+        //then
+        var expected = BookMapperSetUp.createExpectedResultBookDto();
+        assertEquals(expected, bookDto);
+    }
+
+    @Test
+    void convertBookDetailsDtoToModel(){
+
+        //given
+        var bookDetailsDto = BookMapperSetUp.createBookDetailsDto();
+        //when
+        var book = bookMapper.convertBookDetailsDtoToModel(bookDetailsDto);
+        //then
+        var expected = BookMapperSetUp.createExpectedResultBook();
+        assertEquals(expected, book);
+    }
+
+    @Test
+    void convertEditBookDetailsDtoToModel(){
+
+        //given
+        var editBookDetailsDto = BookMapperSetUp.createEditBookDetailsDto();
+        var book = BookMapperSetUp.createBook();
+        //when
+        var actualBook = bookMapper.convertEditBookDetailsDtoToModel(editBookDetailsDto, book);
+        //then
+        var expected = BookMapperSetUp.createExpectedResultBook();
+        assertEquals(expected, actualBook);
+    }
+
 }

@@ -21,6 +21,5 @@ public class BookDto {
 
     private Integer numberOfPages;
 
-    private List<CommentDto> comments;
 
 }
